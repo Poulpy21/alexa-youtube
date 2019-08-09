@@ -32,11 +32,27 @@
                         }
                     ],
                     "samples": [
-                        "jouer la musique de {query}",
-                        "jouer la chanson de {query}",
-                        "jouer la vidéo de {query}",
-                        "rechercher {query}",
-                        "Jouer {query}"
+                        "recherche {query}",
+                        "Joue {query}",
+                        "Joue la musique de {query}",
+                        "Joue la chanson de {query}",
+                        "Joue la vidéo de {query}",
+                        "Met {query}",
+                        "Met la musique de {query}",
+                        "Met la chanson de {query}",
+                        "Met la vidéo de {query}",
+                        "Lance {query}",
+                        "Lance la musique de {query}",
+                        "Lance la chanson de {query}",
+                        "Lance la vidéo de {query}",
+                        "Ecoute {query}",
+                        "Ecoute la musique de {query}",
+                        "Ecoute la chanson de {query}",
+                        "Ecoute la vidéo de {query}",
+                        "Démarre {query}",
+                        "Démarre la musique de {query}",
+                        "Démarre la chanson de {query}",
+                        "Démarre la vidéo de {query}",
                     ]
                 },
                 {
@@ -63,9 +79,11 @@
                         }
                     ],
                     "samples": [
-                        "Démarrer la playlist {query}",
-                        "Ecouter la playlist {query}",
-                        "Jouer la playlist {query}"
+                        "Démarre la playlist {query}",
+                        "Ecoute la playlist {query}",
+                        "Joue la playlist {query}",
+                        "Met la playlist {query}",
+                        "Lance la playlist {query}"
                     ]
                 },
                 {
@@ -89,9 +107,11 @@
                         }
                     ],
                     "samples": [
-                        "Démarrer ma playlist {query}",
-                        "Lire ma playlist {query}",
-                        "Jouer ma playlist {query}"
+                        "Démarre ma playlist {query}",
+                        "Lis ma playlist {query}",
+                        "Joue ma playlist {query}",
+                        "Met ma playlist {query}",
+                        "Lance ma playlist {query}"
                     ]
                 },
                 {
@@ -115,9 +135,11 @@
                         }
                     ],
                     "samples": [
-                        "Ecouter la chaine {query}",
-                        "Démarrer la chaine {query} ",
-                        "Jouer la chaine {query}"
+                        "Ecoute la chaine {query}",
+                        "Démarre la chaine {query} ",
+                        "Joue la chaine {query}",
+                        "Met la chaine {query}",
+                        "Lance la chaine {query}"
                     ]
                 },
                 {
@@ -140,7 +162,9 @@
                         "Quelle vidéo j'écoute",
                         "Quelle chanson j'écoute",
                         "Qu'est ce que j'écoute",
-                        "Qui chante"
+                        "Qui chante",
+                        "Qui c'est",
+                        "Qui est le chanteur",
                     ]
                 },
                 {

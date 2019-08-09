@@ -7,6 +7,7 @@ from pytube import YouTube
 from pytube.exceptions import LiveStreamError
 from urllib2 import HTTPError
 import logging
+import difflib
 from random import shuffle, randint
 from botocore.vendored import requests
 import re
@@ -227,8 +228,8 @@ def lambda_handler(event, context):
         if event['request']['type'] == "IntentRequest":
             if event['request']['intent']['name'] == 'PlayOneIntent':
                 video_or_audio[1] = 'video'
-    #if event['request']['type'] == "LaunchRequest":
-        #return get_welcome_response(event)
+    if event['request']['type'] == "LaunchRequest":
+        return get_welcome_response(event)
     elif event['request']['type'] == "IntentRequest":
         return on_intent(event)
     elif event['request']['type'] == "SessionEndedRequest":
@@ -508,25 +509,28 @@ def my_playlists_search(query, sr, do_shuffle='0'):
     playlist_id = None
     if 'MY_CHANNEL_ID' in environ:
         channel_id = environ['MY_CHANNEL_ID']
-    search_response = youtube.search().list(
-        q=query,
-        part='id,snippet',
-        maxResults=10,
-        type='playlist',
-        channelId=channel_id
-        ).execute()
-    for playlist in range(sr, len(search_response.get('items'))):
-        if 'playlistId' in search_response.get('items')[playlist]['id']:
-            playlist_id = search_response.get('items')[playlist]['id']['playlistId']
-            break
-    if playlist_id is None:
+    search_response = youtube.playlists().list(
+              part='snippet',
+              maxResults=50,
+              channelId=channel_id
+              ).execute()
+    if 'items' not in search_response:
         return [], None, 0
-    sr = playlist
+    playlist_items = search_response['items']
+    playlist_items = filter(lambda it: ('snippet' in it) and ('title' in it['snippet']), playlist_items)
+    playlist_titles = tuple(map(lambda it: it['snippet']['title'], playlist_items))
+    playlist_title = difflib.get_close_matches(query, playlist_titles, 1, 0.001)
+    if len(playlist_title)==0:
+        return [], None, 0
+    playlist_title = playlist_title[0]
+    playlist_item = filter(lambda it: it['snippet']['title']==playlist_title, playlist_items)[0]
+    playlist_id = playlist_item['id']
+    sr = playlist_titles.index(playlist_title)
     logger.info('Playlist info: https://www.youtube.com/playlist?list='+playlist_id)
-    playlist_title = search_response.get('items')[sr]['snippet']['title']
+
     videos = []
     data={'nextPageToken':''}
-    while 'nextPageToken' in data and len(videos) < 200:
+    while 'nextPageToken' in data and len(videos) < 1000:
         next_page_token = data['nextPageToken']
         data = youtube.playlistItems().list(part='snippet',maxResults=50,playlistId=playlist_id,pageToken=next_page_token).execute()
         for item in data['items']:

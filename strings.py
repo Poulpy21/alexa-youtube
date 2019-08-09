@@ -46,8 +46,8 @@ strings_en = {
 'second':"second",
 }
 strings_fr = {
-'welcome1':"Bienvenue sur Youtube. Dite, par exemple, jouer une vidéo de Madonna.",
-'welcome2':"Ou vous pouvez dire, chanson aléatoire de Michael Jackson.",
+'welcome1':"Bienvenue sur Youtube.",
+'welcome2':"",
 'help':"Par exemple dite, joue une vidéo de Michael Jackson",
 'illegal':"Vous ne pouvez pas faire ça avec cette skill.",
 'gonewrong':"Désolé, quelque chose n'a pas fonctionné",

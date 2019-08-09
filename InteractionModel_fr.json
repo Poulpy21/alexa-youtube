@@ -52,7 +52,7 @@
                         "Démarre {query}",
                         "Démarre la musique de {query}",
                         "Démarre la chanson de {query}",
-                        "Démarre la vidéo de {query}",
+                        "Démarre la vidéo de {query}"
                     ]
                 },
                 {
@@ -164,7 +164,7 @@
                         "Qu'est ce que j'écoute",
                         "Qui chante",
                         "Qui c'est",
-                        "Qui est le chanteur",
+                        "Qui est le chanteur"
                     ]
                 },
                 {

@@ -681,7 +681,7 @@ def search(event):
             playlist['p'] = i
             next_url, title = get_url_and_title(id)
     if next_url == False:
-        return build_response(build_short_speechlet_response('This skill is being throttled by YouTube, please try again later', True))
+        return build_response(build_short_speechlet_response('Pas de réponse de l\'API YouTube, veuillez réessayer plus tard.', True))
     next_token = convert_dict_to_token(playlist)
     if playlist_title is None:
         speech_output = strings['playing'] + ' ' + title

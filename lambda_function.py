@@ -227,8 +227,8 @@ def lambda_handler(event, context):
         if event['request']['type'] == "IntentRequest":
             if event['request']['intent']['name'] == 'PlayOneIntent':
                 video_or_audio[1] = 'video'
-    if event['request']['type'] == "LaunchRequest":
-        return get_welcome_response(event)
+    #if event['request']['type'] == "LaunchRequest":
+        #return get_welcome_response(event)
     elif event['request']['type'] == "IntentRequest":
         return on_intent(event)
     elif event['request']['type'] == "SessionEndedRequest":
